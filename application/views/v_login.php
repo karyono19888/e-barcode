@@ -27,16 +27,14 @@
 			<!-- /.login-logo -->
 			<div class="card card-outline card-primary">
 				<div class="card-header text-center">
-					<!-- <a href="" class="h1"><b>Admin</b>1.0</a> -->
 					<img src="<?= base_url('assets/dist/img/e-brcode.svg'); ?>" alt="" width="100%">
 				</div>
 				<div class="card-body">
-					<?= $this->session->flashdata('message'); ?>
 					<p class="login-box-msg">Sign in to start your session</p>
 
-					<form class="user" method="post" action="<?= base_url('Login/proses'); ?>">
+					<form class="user" method="post" action="<?= base_url('Login/Proses'); ?>">
 						<div class="input-group mb-3">
-							<input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+							<input type="text" class="form-control" id="username" name="username" placeholder="Username" autofocus required>
 							<div class="input-group-append">
 								<div class="input-group-text">
 									<span class="fas fa-envelope"></span>
@@ -52,7 +50,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-8">
+							<div class="col-6">
 								<div class="icheck-primary">
 									<input type="checkbox" id="lihatpas" class="form-checkbox">
 									<label for="lihatpas">
@@ -61,8 +59,8 @@
 								</div>
 							</div>
 							<!-- /.col -->
-							<div class="col-4">
-								<button type="submit" id="myButton" class="btn btn-primary btn-block" data-loading-text="Loading..."><i class="fas fa-user-lock"></i> Login</button>
+							<div class="col-6">
+								<button type="submit" id="myButton" class="btn btn-primary btn-block"><i class="fas fa-user-lock"></i> Login</button>
 							</div>
 							<!-- /.col -->
 						</div>
@@ -97,8 +95,8 @@
 		<script>
 			SweetAlert.fire({
 				icon: 'success',
-				title: 'Login Berhasil',
-				text: '<?php echo $this->session->flashdata('success'); ?>',
+				title: '<?php echo $this->session->flashdata('success'); ?>',
+				showConfirmButton: false,
 				timer: 1500
 			})
 		</script>

@@ -17,37 +17,41 @@ class M_auth extends CI_Model
 		$this->db->insert('tb_user',$data_user);
 	}
 
-    function login_user($username,$password)
-	{
-        $query = $this->db->get_where('a_user',array('a_user_username'=>$username));
-        if($query->num_rows() > 0)
-        {
-            $data_user = $query->row();
-            if (password_verify($password, $data_user->a_user_password)) {
-                $this->session->set_userdata('username', $username);
-                $this->session->set_userdata('id', $data_user->a_user_id);
-                $this->session->set_userdata('nama', $data_user->a_user_name);
-                $this->session->set_userdata('level', $data_user->a_user_level);
-                $this->session->set_userdata('is_login', TRUE);
-                return TRUE;
+    public function Login($username, $password)
+    {
+        $user = $this->db->get_where('a_user', array('a_user_username' => $username))->row_array();
+        if ($user) {
+            if ($user['a_user_active'] == "Aktif") {
+                if (password_verify($password, $user['a_user_password'])) {
+                    $data = [
+                        'id'        => $user['a_user_id'],
+                        'username'  => $user['a_user_username'],
+                        'nama'      => $user['a_user_name'],
+                        'level'     => $user['a_user_level'],
+                        'is_login'  => TRUE,
+                    ];
+                    $this->session->set_userdata($data);
+                    $this->session->set_flashdata('success', 'Login Berhasil...');
+                    redirect('Dashboard');
+                } else {
+                    $this->session->set_flashdata('error', 'Password Salah!');
+                    redirect('Login');
+                }
             } else {
-                return FALSE;
+                $this->session->set_flashdata('error', 'Username sudah tidak aktif');
+                redirect('Login');
             }
+        } else {
+            $this->session->set_flashdata('error', 'Username tidak terdaftar');
+            redirect('Login');
         }
-        else
-        {
-            return FALSE;
-        }
-	}
+    }
 
     function cek_login()
     {
         if(empty($this->session->userdata('is_login')))
         {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <i class="icon fas fa-ban"></i> Alert! Session your login expired.
-          </div>');
+            $this->session->set_flashdata('error', 'Your login is expired');
 			redirect('login');
 		}
     }

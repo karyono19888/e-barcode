@@ -19,12 +19,53 @@
 
 	<!-- Main content -->
 	<section class="content">
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-12">
+				<div class="info-box">
+					<span class="info-box-icon bg-info"><i class="fas fa-user-alt"></i></span>
+
+					<div class="info-box-content">
+						<span class="info-box-text">Users</span>
+						<span class="info-box-number"><?= $totalUser; ?></span>
+					</div>
+					<!-- /.info-box-content -->
+				</div>
+				<!-- /.info-box -->
+			</div>
+			<!-- /.col -->
+			<div class="col-md-3 col-sm-6 col-12">
+				<div class="info-box">
+					<span class="info-box-icon bg-success"><i class="fas fa-user-check"></i></span>
+
+					<div class="info-box-content">
+						<span class="info-box-text">Aktif</span>
+						<span class="info-box-number">0</span>
+					</div>
+					<!-- /.info-box-content -->
+				</div>
+				<!-- /.info-box -->
+			</div>
+			<!-- /.col -->
+			<div class="col-md-3 col-sm-6 col-12">
+				<div class="info-box">
+					<span class="info-box-icon bg-danger"><i class="fas fa-user-times"></i></span>
+
+					<div class="info-box-content">
+						<span class="info-box-text">Tidak Aktif</span>
+						<span class="info-box-number">0</span>
+					</div>
+					<!-- /.info-box-content -->
+				</div>
+				<!-- /.info-box -->
+			</div>
+		</div>
+		<!-- /.row -->
 
 		<!-- Default box -->
 		<div class="card shadow mb-3">
 			<div class="card-header">
 				<h5 class="m-0 font-weight-bold text-primary float-left">List Data</h5>
-				<button type="button" class="btn btn-outline-primary btn-sm Tambah float-right" data-toggle="modal" data-target="#modal-sm" data-backdrop="static" data-keyboard="false">
+				<button type="button" class="btn btn-outline-primary Tambah float-right" data-toggle="modal" data-target="#modal-sm" data-backdrop="static" data-keyboard="false">
 					<i class="fas fa-plus-circle"></i> Add
 				</button>
 			</div>
@@ -35,11 +76,11 @@
 						<thead>
 							<tr>
 								<th class="text-center">No</th>
-								<th class="text-center">Full Name</th>
+								<th class="text-center">Name</th>
 								<th class="text-center">Username</th>
 								<!-- <th class="text-center">Email</th> -->
 								<th class="text-center">Level</th>
-								<!-- <th class="text-center">Date & Time</th> -->
+								<th class="text-center">Status</th>
 								<th class="text-center"><i class="fas fa-cogs"></i></th>
 							</tr>
 						</thead>
@@ -71,7 +112,13 @@
 									<td><?= $row['a_user_username'] ?></td>
 									<!-- <td><?= $row['a_user_email'] ?></td> -->
 									<td><?= $row['a_level_name'] ?></td>
-									<!-- <td class="text-center" width="200"><?= $row['a_user_date_created'] ?></td> -->
+									<td class="text-center" width="200">
+										<?php if ($row['a_user_active'] == "Aktif") : ?>
+											<span class="badge badge-pill badge-primary"><?= $row['a_user_active']; ?></span>
+										<?php else : ?>
+											<span class="badge badge-pill badge-danger"><?= $row['a_user_active']; ?></span>
+										<?php endif; ?>
+									</td>
 									<td width="50" class="text-center"><?= $st ?></td>
 								</tr>
 							<?php }; ?>
@@ -133,12 +180,6 @@
 							<input type="password" class="form-control form-password" id="a_user_password" name="a_user_password" placeholder="Password">
 						</div>
 					</div>
-					<!-- <div class="form-group row">
-		<label for="a_user_password" class="col-sm-4 col-form-label"></label>
-		<div class="col-sm-8">
-		<input type="checkbox" class="form-checkbox"> Show password
-		</div>
-		</div> -->
 					<div class="form-group row">
 						<label for="cart" class="col-sm-4 col-form-label">Level</label>
 						<div class="col-sm-8">
@@ -304,23 +345,6 @@
 			confirmButtonText: 'Yes, delete it!'
 		}).then((result) => {
 			if (result.isConfirmed) {
-				Swal.fire(
-					'Deleted!',
-					'Your file has been deleted.',
-					'success'
-				)
-			}
-		})
-		Swal.fire({
-			title: 'Are you sure?',
-			text: "You won't be able to revert this!",
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			confirmButtonText: 'Yes, delete it!'
-		}).then((result) => {
-			if (result.isConfirmed) {
 				$.ajax({
 					type: 'POST',
 					url: '<?= site_url('Admin/User/delete') ?>',
@@ -334,6 +358,8 @@
 								icon: 'success',
 								title: 'Deleted!',
 								text: data.msg,
+								showConfirmButton: false,
+								timer: 1500
 							});
 						} else {
 							SweetAlert.fire({
@@ -392,19 +418,9 @@
 	$(function() {
 		$("#example1").DataTable({
 			"responsive": true,
-			"lengthChange": false,
+			"lengthChange": true,
 			"autoWidth": false,
-			// "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
 		}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-		$('#example2').DataTable({
-			"paging": true,
-			"lengthChange": false,
-			"searching": false,
-			"ordering": true,
-			"info": true,
-			"autoWidth": false,
-			"responsive": true,
-		});
 	});
 </script>
 <?php $this->load->view('template/v_bottom'); ?>

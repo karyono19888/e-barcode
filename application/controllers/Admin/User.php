@@ -10,9 +10,10 @@ class User extends CI_Controller {
     }
 
     function index(){
-        $data['title'] = 'Admin | User';
-        $data['user']   = $this->record->index();
-        $data['level']  = $this->record->getLevel();
+        $data['title']      = 'Admin | User';
+        $data['user']       = $this->record->index();
+        $data['level']      = $this->record->getLevel();
+        $data['totalUser']  = $this->record->totalUsers();
         $this->load->view('template/v_header',$data);
 		$this->load->view('template/v_sidebar');
         $this->load->view('admin/v_user', $data);

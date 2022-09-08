@@ -1,25 +1,32 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
- 
+
 class M_user extends CI_Model
-{    
+{
     static $table1 = 'a_user';
     static $table2 = 'a_level';
-    
+
     public function __construct() {
         parent::__construct();
         $this->load->helper('security');
     }
 
-    function index(){        
-        $this->db->select('a_user_id, a_user_name, a_user_username, a_user_level, a_level_name');
+    function index()
+    {
+        $this->db->select('a_user_id, a_user_name, a_user_username, a_user_level, a_level_name,a_user_active');
         $this->db->join(self::$table2, 'a_user_level=a_level_id', 'left');
         $query  = $this->db->get(self::$table1);
-        return $query;          
+        return $query;
     }
-    
+
+    public function totalUsers()
+    {
+        $query = $this->db->get('a_user');
+        return $query->num_rows();
+    }
+
     function getLevel(){
         $query  = $this->db->get(self::$table2);
-        return $query;        
+        return $query;
     }
 
     function create($a_user_name, $a_user_username, $a_user_password, $a_user_level){
@@ -35,7 +42,8 @@ class M_user extends CI_Model
                 'a_user_name'       => $a_user_name,
                 'a_user_username'   => $a_user_username,
                 'a_user_password'   => password_hash($a_user_password,PASSWORD_DEFAULT),
-                'a_user_level'      => $a_user_level
+                'a_user_level'      => $a_user_level,
+                'a_user_img'        => 'https://ui-avatars.com/api/?name=' . $a_user_name . ''
             ));
             $this->db->trans_complete();
             if($this->db->trans_status() === FALSE){
@@ -46,7 +54,8 @@ class M_user extends CI_Model
         }
     }
 
-    function view($myid){        
+    function view($myid)
+    {
         $this->db->select('*');
         $this->db->join(self::$table2, 'a_user_level=a_level_id', 'left');
         $this->db->where('a_user_id', $myid);
@@ -55,19 +64,20 @@ class M_user extends CI_Model
             $row = $query->row();
             return json_encode(array(
                 'success'           =>true,
-                'a_user_id'         => $row->a_user_id, 
+                'a_user_id'         => $row->a_user_id,
                 'a_user_name'       => $row->a_user_name,
                 'a_user_username'   => $row->a_user_username,
                 'a_user_password'   => $row->a_user_password,
                 'a_level_id'        => $row->a_level_id,
                 'a_level_name'      => $row->a_level_name
-            ));    
+            ));
         }else{
             return json_encode(array('success'=>false, 'msg'=>'Data tidak ditemukan!'));
-        }   
+        }
     }
 
-    function update($a_user_id, $a_user_name, $a_user_username, $a_user_password, $a_user_level){     
+    function update($a_user_id, $a_user_name, $a_user_username, $a_user_password, $a_user_level)
+    {
         if($a_user_id == 1){
             return json_encode(array('success'=>false, 'msg'=>'Administrator tidak bisa diedit!'));
         }else{
@@ -77,7 +87,8 @@ class M_user extends CI_Model
                 $this->db->update(self::$table1,array(
                     'a_user_name'       => $a_user_name,
                     'a_user_username'   => $a_user_username,
-                    'a_user_level'      => $a_user_level
+                    'a_user_level'      => $a_user_level,
+                    'a_user_img'        => 'https://ui-avatars.com/api/?name=' . $a_user_name . ''
                 ));
                 $this->db->trans_complete();
                 if($this->db->trans_status() === FALSE){
@@ -93,7 +104,8 @@ class M_user extends CI_Model
                     'a_user_name'       => $a_user_name,
                     'a_user_username'   => $a_user_username,
                     'a_user_password'   => password_hash($a_user_password,PASSWORD_DEFAULT),
-                    'a_user_level'      => $a_user_level
+                    'a_user_level'      => $a_user_level,
+                    'a_user_img'        => 'https://ui-avatars.com/api/?name=' . $a_user_name . ''
                 ));
                 $this->db->trans_complete();
                 if($this->db->trans_status() === FALSE){
@@ -102,7 +114,7 @@ class M_user extends CI_Model
                     return json_encode(array('success'=>true, 'msg'=>'Update data berhasil!'));
                 }
             }
-        }   
+        }
     }
 
     function delete($a_user_id){
