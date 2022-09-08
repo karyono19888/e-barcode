@@ -15,7 +15,7 @@
 							</div>
 							<div class="form-group">
 								<label for="m_myamin_kode">Kode</label>
-								<input type="text" class="form-control" id="m_myamin_kode" name="m_myamin_kode" value="<?= $data['m_myamin_tipe']; ?>">
+								<input type="text" class="form-control" id="m_myamin_kode" name="m_myamin_kode" value="<?= $data['m_myamin_kode']; ?>">
 							</div>
 							<div class="form-group">
 								<label for="m_myamin_jenis">Jenis</label>
@@ -45,7 +45,7 @@
 							</div>
 							<div class="form-group">
 								<label for="m_myamin_status">Status</label>
-								<select class="form-control select2" style="width: 100%;">
+								<select class="form-control select2" style="width: 100%;" name="m_myamin_status" id="m_myamin_status">
 									<option selected="selected" value="<?= $data['m_myamin_status']; ?>"><?= $data['m_myamin_status']; ?></option>
 									<?php if ($data['m_myamin_status'] == "Aktif") : ?>
 										<option value="Tidak Aktif">Tidak Aktif</option>

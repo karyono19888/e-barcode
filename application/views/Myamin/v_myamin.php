@@ -34,24 +34,11 @@
 			<!-- /.col -->
 			<div class="col-md-3 col-sm-6 col-12">
 				<div class="info-box">
-					<span class="info-box-icon bg-warning"><i class="far fa-flag"></i></span>
-
-					<div class="info-box-content">
-						<span class="info-box-text">Kategori</span>
-						<span class="info-box-number">410</span>
-					</div>
-					<!-- /.info-box-content -->
-				</div>
-				<!-- /.info-box -->
-			</div>
-			<!-- /.col -->
-			<div class="col-md-3 col-sm-6 col-12">
-				<div class="info-box">
 					<span class="info-box-icon bg-success"><i class="fas fa-check-circle"></i></span>
 
 					<div class="info-box-content">
 						<span class="info-box-text">Aktif</span>
-						<span class="info-box-number">13,648</span>
+						<span class="info-box-number"><?= $Aktif; ?></span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -64,7 +51,7 @@
 
 					<div class="info-box-content">
 						<span class="info-box-text">Tidak Aktif</span>
-						<span class="info-box-number">93,139</span>
+						<span class="info-box-number"><?= $TidakAktif; ?></span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>

@@ -15,6 +15,8 @@ class Myamin extends CI_Controller
 	{
 		$data['title'] 		= 'Master | Karyawan ';
 		$data['TotalProduk'] =  $this->record->TotalProduk();
+		$data['Aktif'] 		=  $this->record->Aktif();
+		$data['TidakAktif'] 	=  $this->record->TidakAktif();
 		$this->load->view('template/v_header', $data);
 		$this->load->view('template/v_sidebar');
 		$this->load->view('Myamin/v_myamin', $data);
