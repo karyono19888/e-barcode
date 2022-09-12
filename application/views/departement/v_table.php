@@ -7,7 +7,7 @@
 	</div>
 	<div class="card-body">
 		<div class="table-responsive" style="vertical-align: middle;">
-			<table id="example1" class="table table-bordered table-striped table-hover">
+			<table id="example1" class="table table-bordered table-striped table-hover table-valign-middle">
 				<thead>
 					<tr>
 						<th class="text-center">No</th>

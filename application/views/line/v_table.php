@@ -7,8 +7,7 @@
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
-			<table id="example1" class="table table-bordered table-striped table-hover table-sm">
-				<!-- <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0"> -->
+			<table id="example1" class="table table-bordered table-striped table-hover table-valign-middle">
 				<thead>
 					<tr>
 						<th class="text-center">No</th>
