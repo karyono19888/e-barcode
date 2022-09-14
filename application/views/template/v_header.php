@@ -25,6 +25,8 @@
 	<link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 	<link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+	<link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/select2/css/select2.min.css">
+	<link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 	<style>
 		.img-profile {
 			height: 2rem;
@@ -101,10 +103,10 @@
 					</a>
 					<!-- Dropdown - User Information -->
 					<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-						<!-- <a class="dropdown-item" href="<?= base_url('Home/Profile'); ?>">
+						<a class="dropdown-item" href="<?= base_url('Home/Profile'); ?>">
 							<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 							Profile
-						</a> -->
+						</a>
 						<a class="dropdown-item" href="#" onclick="Logout()">
 							<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 							Logout
@@ -117,7 +119,7 @@
 		<!-- Main Sidebar Container -->
 		<aside class="main-sidebar sidebar-light-primary">
 			<!-- Brand Logo -->
-			<a href="<?= base_url('home'); ?>" class="brand-link">
+			<a href="#" class="brand-link">
 				<img src="<?= base_url('assets/dist/img/e-brcode.svg'); ?>" alt="logo-admin" width="100%" class="brand-image">
 			</a>
 

@@ -12,9 +12,7 @@
 <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
-<!-- Retina -->
-<!-- <script src="<?= base_url('assets'); ?>/plugins/retina/retina.min.js"></script> -->
+<script src="<?= base_url('assets'); ?>/plugins/select2/js/select2.full.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="<?= base_url('assets'); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
@@ -38,11 +36,8 @@
 <script src="<?= base_url('assets'); ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="<?= base_url('assets'); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?= base_url('assets'); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- overlayScrollbars -->
-<!-- <script src="<?= base_url('assets'); ?>/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
 <!-- pace-progress -->
 <script src="<?= base_url('assets'); ?>/plugins/pace-progress/pace.min.js"></script>
-
 <?php if ($this->session->flashdata('success')) : ?>
     <script>
         SweetAlert.fire({

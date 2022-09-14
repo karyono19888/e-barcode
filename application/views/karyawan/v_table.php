@@ -27,26 +27,26 @@
 						<tr>
 							<td class="text-center"><?= $i++; ?></td>
 							<td>
-								<?= $a['m_jab_nama']; ?>
+								<?= $a['m_org_nama']; ?>
 							</td>
 							<td>
-								<a href="javascript:void(0)">Nama Departement</a>
+								Dep : <a href="javascript:void(0)"><?= $a['m_dep_nama']; ?></a>
 								<br>
 								<span>
-									Nama Jabatan
+									Jab : <?= $a['m_jab_nama']; ?>
 								</span>
 							</td>
-							<td><?= $a['m_karyawan_NIP']; ?></td>
-							<td><?= $a['m_jab_nama']; ?></td>
+							<td><?= $a['karyawan_nik']; ?></td>
+							<td><?= $a['karyawan_nama']; ?></td>
 							<td class="text-center">
-								<?php if ($a['m_karyawan_ket'] == "Aktif") : ?>
-									<span class="badge badge-pill badge-primary"><?= $a['m_karyawan_ket']; ?></span>
+								<?php if ($a['karyawan_status'] == "Aktif") : ?>
+									<span class="badge badge-pill badge-primary"><?= $a['karyawan_status']; ?></span>
 								<?php else : ?>
-									<span class="badge badge-pill badge-primary"><?= $a['m_karyawan_ket']; ?></span>
+									<span class="badge badge-pill badge-primary"><?= $a['karyawan_status']; ?></span>
 								<?php endif; ?>
 							</td>
 							<td class="text-center">
-								<button type="button" data-id="<?= $a['m_jab_id']; ?>" class="btn bg-gradient-info Preview">
+								<button type="button" data-id="<?= $a['karyawan_id']; ?>" class="btn bg-gradient-info Preview">
 									Preview
 								</button>
 							</td>

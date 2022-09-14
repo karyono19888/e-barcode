@@ -64,4 +64,32 @@ class Karyawan extends CI_Controller
         $id     = $this->input->post('id');
         echo $this->record->Delete($id);
     }
+
+    public function getNamaPerusahaan()
+    {
+        $searchTerm = $this->input->post('searchTerm');
+        $response   = $this->record->getNamaPerusahaan($searchTerm);
+        echo json_encode($response);
+    }
+
+    public function getNamaDepartement()
+    {
+        $searchTerm = $this->input->post('searchTerm');
+        $response   = $this->record->getNamaDepartement($searchTerm);
+        echo json_encode($response);
+    }
+
+    public function getNamaJabatan()
+    {
+        $searchTerm = $this->input->post('searchTerm');
+        $response   = $this->record->getNamaJabatan($searchTerm);
+        echo json_encode($response);
+    }
+
+    public function getNamaLine()
+    {
+        $searchTerm = $this->input->post('searchTerm');
+        $response   = $this->record->getNamaLine($searchTerm);
+        echo json_encode($response);
+    }
 }
