@@ -39,8 +39,9 @@ class M_line extends CI_Model
 		$this->db->trans_start();
 		$this->db->insert('m_line', array(
 			'm_line_kode'  	=> strtoupper($this->input->post('m_line_kode')),
-			'm_line_nama'  	=> ucwords($this->input->post('m_line_nama')),
+			'm_line_nama'  	=> strtoupper($this->input->post('m_line_nama')),
 			'm_line_status'  	=> $this->input->post('m_line_status'),
+			'm_line_warna'  	=> $this->input->post('m_line_warna'),
 			'm_line_user'     => $this->session->userdata('id'),
 			'created_at' 		=> time()
 		));
@@ -65,8 +66,9 @@ class M_line extends CI_Model
 		$this->db->where('m_line_id', $this->input->post('m_line_id'));
 		$this->db->update('m_line', array(
 			'm_line_kode'  	=> strtoupper($this->input->post('m_line_kode')),
-			'm_line_nama'  	=> ucwords($this->input->post('m_line_nama')),
+			'm_line_nama'  	=> strtoupper($this->input->post('m_line_nama')),
 			'm_line_status'  	=> $this->input->post('m_line_status'),
+			'm_line_warna'  	=> $this->input->post('m_line_warna'),
 			'm_line_user'     => $this->session->userdata('id'),
 			'created_at' 		=> time()
 		));

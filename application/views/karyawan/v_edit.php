@@ -159,14 +159,10 @@
 		let karyawan_perusahaan = document.getElementById("karyawan_perusahaan").value;
 		let karyawan_departement = document.getElementById("karyawan_departement").value;
 		let karyawan_jabatan = document.getElementById("karyawan_jabatan").value;
-		let karyawan_line = document.getElementById("karyawan_line").value;
 		let karyawan_status = document.getElementById("karyawan_status").value;
-		if ((karyawan_nama == "") || (karyawan_nik == "") || (karyawan_jenis_kelamin == "") || (karyawan_perusahaan == "") || (karyawan_departement == "") || (karyawan_jabatan == "") || (karyawan_line == "") || (karyawan_status == "")) {
+		if ((karyawan_nama == "") || (karyawan_nik == "") || (karyawan_jenis_kelamin == "") || (karyawan_perusahaan == "") || (karyawan_departement == "") || (karyawan_jabatan == "") || (karyawan_status == "")) {
 			if (karyawan_status == "") {
 				notif("Status");
-			}
-			if (karyawan_line == "") {
-				notif("Line");
 			}
 			if (karyawan_jabatan == "") {
 				notif("Jabatan");

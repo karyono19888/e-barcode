@@ -13,6 +13,7 @@
 						<th class="text-center">No</th>
 						<th class="text-center">Kode</th>
 						<th class="text-center">Nama</th>
+						<th class="text-center">Warna</th>
 						<th class="text-center">Status</th>
 						<th class="text-center"><i class="fas fa-cogs"></i></th>
 					</tr>
@@ -26,11 +27,14 @@
 							<td class="text-center"><?= $i++; ?></td>
 							<td><?= $a['m_line_kode']; ?></td>
 							<td><?= $a['m_line_nama']; ?></td>
+							<td>
+								<i class="fas fa-circle text-<?= $a['m_line_warna']; ?>"> <?= $a['m_line_warna']; ?></i>
+							</td>
 							<td class="text-center">
 								<?php if ($a['m_line_status'] == "Aktif") : ?>
 									<span class="badge badge-pill badge-primary"><?= $a['m_line_status']; ?></span>
 								<?php else : ?>
-									<span class="badge badge-pill badge-primary"><?= $a['m_line_status']; ?></span>
+									<span class="badge badge-pill badge-danger"><?= $a['m_line_status']; ?></span>
 								<?php endif; ?>
 							</td>
 							<td class="text-center">

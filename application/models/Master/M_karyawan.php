@@ -48,7 +48,7 @@ class M_karyawan extends CI_Model
             'karyawan_departement'      => $this->input->post('karyawan_departement'),
             'karyawan_jabatan'          => $this->input->post('karyawan_jabatan'),
             'karyawan_line'             => $this->input->post('karyawan_line'),
-            'karyawan_line'             => $this->input->post('karyawan_line'),
+            'm_karyawan_img'            => 'https://ui-avatars.com/api/?name=' . ucwords($this->input->post('karyawan_nama')) . '',
             'users'                     => $this->session->userdata('id'),
             'created_at'                => time()
         ));
@@ -83,7 +83,7 @@ class M_karyawan extends CI_Model
             'karyawan_departement'      => $this->input->post('karyawan_departement'),
             'karyawan_jabatan'          => $this->input->post('karyawan_jabatan'),
             'karyawan_line'             => $this->input->post('karyawan_line'),
-            'karyawan_line'             => $this->input->post('karyawan_line'),
+            'm_karyawan_img'            => 'https://ui-avatars.com/api/?name=' . ucwords($this->input->post('karyawan_nama')) . '',
             'users'                     => $this->session->userdata('id'),
             'created_at'      => time()
         ));

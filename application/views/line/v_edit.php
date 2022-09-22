@@ -20,6 +20,18 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
+								<label for="m_line_warna">Warna</label>
+								<select class="form-control select2" style="width: 100%;" name="m_line_warna" id="m_line_warna">
+									<option selected="selected" value="<?= $data['m_line_warna']; ?>"><?= $data['m_line_warna']; ?></option>
+									<option value="primary">Primary</option>
+									<option value="secondary">Secondary</option>
+									<option value="info">Info</option>
+									<option value="success">Success</option>
+									<option value="warning">Warning</option>
+									<option value="danger">Danger</option>
+								</select>
+							</div>
+							<div class="form-group">
 								<label for="m_line_status">Status</label>
 								<select class="form-control select2" style="width: 100%;" name="m_line_status" id="m_line_status">
 									<option selected="selected" value="<?= $data['m_line_status']; ?>"><?= $data['m_line_status']; ?></option>
